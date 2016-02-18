@@ -37,6 +37,9 @@ public class StockManager
      */
     public void delivery(int id, int amount)
     {
+        if (findProduct(id))
+
+    }
     }
 
     /**
