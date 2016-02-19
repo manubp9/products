@@ -30,7 +30,10 @@ public class StockManager
         {
             stock.add(item);
         }
-        
+        else
+        {
+            System.out.println("Ya hay un objeto con ese ID,no se añadira");
+        }
     }
 
     /**
@@ -59,7 +62,7 @@ public class StockManager
         Product producto = null;
         int index = 0;
         boolean found = false;
-        while(index < stock.size() || !found)
+        while(index < stock.size() && !found)
         {
             if(stock.get(index).getID()==id)
             {
@@ -114,4 +117,24 @@ public class StockManager
             }            
         }
     }
+    /**
+     * busca los objetos por el nombre
+     */
+    public Product findProduct(String name)
+    {
+        Product producto = null;
+        int index = 0;
+        boolean found = false;
+        while(index < stock.size() && !found)
+        {
+            if(stock.get(index).getName()==name)
+            {
+                found = true;
+                producto = stock.get(index);
+            }
+            index ++;
+        }
+        return producto;
+    }
+
 }
