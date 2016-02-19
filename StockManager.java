@@ -37,9 +37,12 @@ public class StockManager
      */
     public void delivery(int id, int amount)
     {
-        if (findProduct(id))
-
-    }
+        if (findProduct(id) != null){
+            findProduct(id).increaseQuantity(amount);
+        }
+        else{
+            System.out.println("El id seleccionado no existe");
+        }
     }
 
     /**
@@ -86,5 +89,25 @@ public class StockManager
      */
     public void printProductDetails()
     {
+        {
+            for (Product producto : stock){
+                System.out.println(producto);
+            }
+        }
+    }
+    /**
+     * imprime por pantalla los detalles de los productos 
+     * cuyo stock este por debajo del parametro dado
+     */
+    public void underGivenNumberInStock(int stockMinimo)
+    {
+        for(Product producto : stock)
+        {
+            int cantidad = producto.getQuantity();
+            if(cantidad < stockMinimo)
+            {
+                System.out.println(producto);
+            }            
+        }
     }
 }
